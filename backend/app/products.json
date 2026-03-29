@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "iPhone 13",
+    "category": "electronics",
+    "price": 60000,
+    "rating": 4.7,
+    "description": "Great performance and camera phone"
+  },
+  {
+    "id": 2,
+    "name": "Gaming Laptop ASUS",
+    "category": "electronics",
+    "price": 90000,
+    "rating": 4.6,
+    "description": "Best for gaming and heavy tasks"
+  },
+  {
+    "id": 3,
+    "name": "Men's Casual Shirt",
+    "category": "clothing",
+    "price": 1200,
+    "rating": 4.2,
+    "description": "Comfortable cotton shirt for daily wear"
+  },
+  {
+    "id": 4,
+    "name": "Women's Dress",
+    "category": "clothing",
+    "price": 2500,
+    "rating": 4.4,
+    "description": "Stylish party wear dress"
+  },
+  {
+    "id": 5,
+    "name": "Python Programming Book",
+    "category": "books",
+    "price": 800,
+    "rating": 4.8,
+    "description": "Learn Python programming from basics to advanced"
+  },
+  {
+    "id": 6,
+    "name": "Wireless Headphones",
+    "category": "electronics",
+    "price": 3000,
+    "rating": 4.3,
+    "description": "Good battery and sound quality"
+  }
+]
