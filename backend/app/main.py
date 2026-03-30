@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from app.services.hf_llm import generate_response 
+from services.hf_llm import generate_response
 
 app = FastAPI()
 
