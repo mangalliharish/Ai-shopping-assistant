@@ -15,10 +15,15 @@ def home():
 
 @app.post("/chat")
 def chat(req: ChatRequest):
-    # 🔍 Step 1: Get products from SerpAPI
-    products = search_products_online(req.message)
+    try:
+        # 🔍 Get products
+        products = search_products_online(req.message)
 
-    # 🤖 Step 2: Generate AI response using Hugging Face
-    reply = generate_ai_response(req.message, products)
+        # 🤖 AI response
+        reply = generate_ai_response(req.message, products)
 
-    return {"response": reply}
+        return {"response": reply}
+
+    except Exception as e:
+        print("ERROR:", str(e))
+        return {"response": f"Error: {str(e)}"}
