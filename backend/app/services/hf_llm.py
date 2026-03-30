@@ -1,8 +1,8 @@
 import os
 from huggingface_hub import InferenceClient
 
-# ✅ Hugging Face client
 client = InferenceClient(
+    model="mistralai/Mistral-7B-Instruct-v0.2",  # ✅ IMPORTANT
     token=os.getenv("HUGGINGFACE_API_KEY")
 )
 
@@ -28,7 +28,7 @@ User query: {query}
 Top products:
 {product_text}
 
-Give a short, helpful recommendation and suggest the best option.
+Give a short helpful recommendation.
 """
 
         response = client.text_generation(
@@ -39,5 +39,5 @@ Give a short, helpful recommendation and suggest the best option.
         return response
 
     except Exception as e:
-        print("HF ERROR:", str(e))
+        print("HF ERROR:", str(e))  # 🔥 THIS WILL SHOW REAL ERROR
         return "Something went wrong with AI 😔"
