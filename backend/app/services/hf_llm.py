@@ -1,45 +1,19 @@
-from transformers import pipeline
+from huggingface_hub import InferenceClient
+import os
 
-# ✅ Load lightweight model
-generator = pipeline(
-    "text-generation",
-    model="gpt2",
-    max_new_tokens=120
+# Initialize client using API key from environment
+client = InferenceClient(
+    api_key=os.getenv("HF_API_KEY")
 )
 
-
-# 🎯 Smart reason generator (rule-based boost)
-def generate_reason(query):
-    query = query.lower()
-
-    if "gaming" in query:
-        return "Great for gaming 🎮"
-    elif "camera" in query:
-        return "Excellent camera 📸"
-    elif "battery" in query:
-        return "Long battery life 🔋"
-    elif "performance" in query:
-        return "Fast performance ⚡"
-    elif "display" in query:
-        return "Great display quality 🖥️"
-    else:
-        return "Best value for money 💰"
-
-
-def generate_ai_response(query, products):
-    if not products:
-        return "No good products found."
-
-    # 🎯 Take top 3 products only
-    top_products = products[:3]
-
-    recommendations = []
-
-    for i, product in enumerate(top_products[:2]):  # ✅ Only top 2
-        reason = generate_reason(query)
-
-        recommendations.append(
-            f"{i+1}. {product['title']} - {reason}"
+def generate_response(prompt: str) -> str:
+    try:
+        response = client.text_generation(
+            model="mistralai/Mistral-7B-Instruct-v0.2",
+            prompt=prompt,
+            max_new_tokens=200,
+            temperature=0.7
         )
-
-    return "\n".join(recommendations)
+        return response.strip()
+    except Exception as e:
+        return f"Error: {str(e)}"
