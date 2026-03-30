@@ -25,5 +25,4 @@ def chat(req: ChatRequest):
         return {"response": reply}
 
     except Exception as e:
-        print("ERROR:", str(e))
         return {"response": f"Error: {str(e)}"}
